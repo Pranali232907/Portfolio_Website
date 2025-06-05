@@ -1,0 +1,210 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<section
+  id="profile"
+  class="profile d-flex flex-column align-items-center justify-content-center py-5"
+>
+  {% for user in users %}
+  <div class="section__text text-center">
+    <p class="section__text__p1">Hello, I'm</p>
+    <h1 class="title">{{user.user_name}}</h1>
+    <p class="section__text__p2">{{user.user_role}}</p>
+    <div class="btn-container">
+      <button
+        class="btn btn-outline-light"
+        onclick="location.href='./#projects'"
+      >
+        Explore Projects
+      </button>
+      <button
+        class="btn btn-outline-light"
+        onclick="location.href='./#contact'"
+      >
+        Contact Info
+      </button>
+    </div>
+    <div id="socials-container" class="mt-3">
+      <img
+        src="{% static 'images/linkedin.png'%}"
+        alt="My LinkedIn profile"
+        class="icon"
+        onclick="location.href='https://www.linkedin.com/in/pranali-bhosale-530330341/'"
+      />
+      <img
+        src="{% static 'images/github.png'%}"
+        alt="My Github profile"
+        class="icon"
+        onclick="location.href='https://github.com/Pranali232907'"
+      />
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+<section id="about" class="about py-5 mt-3">
+  {% for about in abouts %}
+  <div class="container">
+    <p class="section__text__p1 text-center">Get To Know More</p>
+    <h1 class="title text-center">About Me</h1>
+    <div class="row mt-5">
+      <div class="col-md-6">
+        <img
+          src="{{about.profile_pic.url}}"
+          alt="Profile picture"
+          class="about-pic img-fluid rounded"
+        />
+      </div>
+      <div class="col-md-6">
+        <div class="about-containers">
+          <div class="details-container">
+            <img
+              src="{% static 'images/experience.png'%}"
+              alt="Experience icon"
+              class="icon"
+            />
+            <h3>Experience</h3>
+            <p>{{about.experience}}<br />{{about.experience_role}}</p>
+          </div>
+          <div class="details-container">
+            <img
+              src="{% static 'images/education.png'%}"
+              alt="Education icon"
+              class="icon"
+            />
+            <h3>Education</h3>
+            <p>{{about.education}}</p>
+          </div>
+        </div>
+        <div class="text-container">
+          <p>{{about.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+<section id="experience" class="experience py-5">
+  <div class="container">
+    <p class="section__text__p1 text-center">Explore My</p>
+    <h1 class="title text-center">Skills</h1>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <h2 class="experience-sub-title text-center">Frontend Development</h2>
+        <div class="article-container">
+          {% for frontend_skill in frontend_skills %}
+          <article>
+            <img
+              src="{{frontend_skill.skill_logo.url}}"
+              alt="Experience icon"
+              class="icon"
+            />
+            <div>
+              <h3>{{frontend_skill.skill_name}}</h3>
+              <p>{{frontend_skill.skill_level}}</p>
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h2 class="experience-sub-title text-center">Backend Development</h2>
+        <div class="article-container">
+          {% for backend_skill in backend_skills %}
+          <article>
+            <img
+              src="{{backend_skill.skill_logo.url}}"
+              alt="Experience icon"
+              class="icon"
+            />
+            <div>
+              <h3>{{backend_skill.skill_name}}</h3>
+              <p>{{backend_skill.skill_level}}</p>
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="projects py-5">
+  <div class="container">
+    <p class="section__text__p1 text-center">Browse My Recent</p>
+    <h1 class="title text-center">Projects</h1>
+    <div class="row mt-5">
+      {% for project in projects %}
+      <div class="col-md-4">
+        <div class="details-container color-container">
+          <img
+            src="{{project.project_image.url}}"
+            alt="Project 1"
+            class="project-img img-fluid rounded"
+          />
+          <h2 class="experience-sub-title project-title">
+            {{project.project_name}}
+          </h2>
+          <div class="btn-container">
+            <button
+              class="btn btn-outline-dark"
+              onclick="location.href='https://github.com/Pranali232907'"
+            >
+              Github
+            </button>
+            <button
+              class="btn btn-outline-dark"
+              onclick="location.href='https://github.com/Pranali232907'"
+            >
+              Live Demo
+            </button>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <p class="section__text__p1">Get in Touch</p>
+  <h1 class="title">Contact Me</h1>
+  <div class="contact-info-upper-container">
+    <div class="contact-info-container">
+      <img
+        src="{% static 'images/email.png' %}"
+        alt="Email icon"
+        class="icon contact-icon email-icon"
+      />
+      <p><a href="mailto:pranalibhosale757@gmail.com">pranalibhosale757@gmail.com</a></p>
+    </div>
+    <div class="contact-info-container">
+      <img
+        src="{% static 'images/linkedin.png' %}"
+        alt="LinkedIn icon"
+        class="icon contact-icon"
+      />
+      <p><a href="https://www.linkedin.com/in/pranali-bhosale-530330341/">LinkedIn</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="py-4 bg-dark text-white">
+  <div class="container text-center">
+    <nav>
+      <ul class="nav justify-content-center">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item">
+          <a class="nav-link" href="#experience">Skills</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#projects">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact</a>
+        </li>
+      </ul>
+    </nav>
+    <p>Copyright 2025 Pranali Bhosale. All Rights Reserved.</p>
+  </div>
+</footer>
+{% endblock content %}
